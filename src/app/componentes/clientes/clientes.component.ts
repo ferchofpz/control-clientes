@@ -10,6 +10,7 @@ import { ClienteServicio } from 'src/app/servicios/cliente.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  isCollapsed: boolean = true;
 
   constructor( private clientesService: ClienteServicio) { }
 
