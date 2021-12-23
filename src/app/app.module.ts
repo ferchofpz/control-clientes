@@ -14,6 +14,13 @@ import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado
 import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat/';
+import { AngularFirestoreModule, SETTINGS } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +37,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
