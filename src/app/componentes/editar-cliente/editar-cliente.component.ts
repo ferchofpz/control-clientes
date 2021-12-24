@@ -35,11 +35,24 @@ export class EditarClienteComponent implements OnInit {
   }
 
   guardar({value, valid}: {value: Cliente, valid: boolean}){
-
+    if(!valid){
+      this.flashMessages.show('Por favor llena el formulario correctamente', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+    }
+    else{
+      value.id = this.id;
+      // Modificar el cliente
+      this.clientesService.modificarCliente(value);
+      this.router.navigate(['/']);
+    }
   }
 
   eliminar(){
-
+    if(confirm('Seguro que desea eliminar el cliente?')){
+      this.clientesService.eliminarCliente(this.cliente);
+      this.router.navigate(['/']);
+    }
   }
 
 }
