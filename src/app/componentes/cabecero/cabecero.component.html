@@ -23,7 +23,7 @@
       id="navbarCollapse"
       [ngbCollapse]="isCollapsed"
     >
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" *ngIf="isLoggedIn">
         <li class="nav-item px-2">
           <a routerLink="/" class="nav-link">Inicio</a>
         </li>
@@ -32,7 +32,7 @@
       <!-- ms-auto carga el elemento hacia la derecha -->
       <ul class="navbar-nav ms-auto">
         <!-- mr-3: margin right 3px -->
-        <li class="nav-item dropdown mr-3">
+        <li class="nav-item dropdown mr-3" *ngIf="isLoggedIn">
           <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> -->
           <a
             class="nav-link dropdown-toggle"
@@ -40,7 +40,7 @@
             [attr.aria-expanded]="!isCollapsed"
             aria-controls="dropdownCollapse"
           >
-            <i class="fas fa-user"></i>Bienvenido
+            <i class="fas fa-user"></i>Bienvenido {{ loggedInUser }}
           </a>
           <div
             class="dropdown-menu"
@@ -57,9 +57,15 @@
           </div>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLoggedIn">
           <a routerLink="/login" class="nav-link">
             <i class="fas fa-user"></i> Login
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" style="cursor: pointer;" (click)="logout()">
+            <i class="fas fa-user-times"></i> Logout
           </a>
         </li>
 
