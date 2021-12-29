@@ -24,6 +24,7 @@ import { ClienteServicio } from './servicios/cliente.service';
 import { LoginService } from './servicios/login.service';
 import { AuthGuard } from './guardianes/auth.guard';
 import { ConfiguracionService } from './servicios/configuracion.service';
+import { ConfiguracionGuard } from './guardianes/configuracion.guard';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ConfiguracionService } from './servicios/configuracion.service';
     ClienteServicio,
     LoginService,
     AuthGuard,
-    ConfiguracionService
+    ConfiguracionService,
+    ConfiguracionGuard
   ],
   bootstrap: [AppComponent]
 })
