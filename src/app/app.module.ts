@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { ClienteServicio } from './servicios/cliente.service';
 import { LoginService } from './servicios/login.service';
 import { AuthGuard } from './guardianes/auth.guard';
+import { ConfiguracionService } from './servicios/configuracion.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AuthGuard } from './guardianes/auth.guard';
   providers: [
     ClienteServicio,
     LoginService,
-    AuthGuard
+    AuthGuard,
+    ConfiguracionService
   ],
   bootstrap: [AppComponent]
 })
