@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfiguracionService } from 'src/app/servicios/configuracion.service';
 import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class CabeceroComponent implements OnInit {
   public isDropdownCollapsed = true;
   isLoggedIn: boolean;
   loggedInUser: string | null;
+  permitirRegistro: boolean | any;
 
   constructor(
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private configuracionService: ConfiguracionService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +31,12 @@ export class CabeceroComponent implements OnInit {
         else{
           this.isLoggedIn = false;
         }
+      }
+    );
+
+    this.configuracionService.getConfiguracion().subscribe(
+      configuracion => {
+        this.permitirRegistro = configuracion.permitirRegistro;
       }
     );
   }
