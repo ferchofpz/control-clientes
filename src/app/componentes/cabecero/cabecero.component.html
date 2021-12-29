@@ -58,8 +58,14 @@
         </li>
 
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a routerLink="/login" class="nav-link">
+          <a routerLink="/login" class="nav-link" routerLinkActive="router-link-active">
             <i class="fas fa-user"></i> Login
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a routerLink="/registrarse" class="nav-link" routerLinkActive="router-link-active">
+            <i class="fas fa-user"></i> Registro
           </a>
         </li>
 
